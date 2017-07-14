@@ -29,7 +29,7 @@ export default class AllCampuses extends Component {
               <div className="col-sm-3" key={campus.id}>
                 <a href ={`/campuses/${campus.id}`}>
                 <img className="img-responsive" src={campus.image} />
-                <div className="caption">
+                <div className="caption text-center">
                   <h5>
                     <span>{campus.name}</span>
                   </h5>

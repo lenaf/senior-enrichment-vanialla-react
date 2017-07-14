@@ -20,7 +20,7 @@ import Navbar from './components/Navbar'
 render(
   //put the store in global context
   <Provider store={store}>
-    <div id="main" className="container-fluid text-center">
+    <div id="main" className="container-fluid text-left">
       <Navbar />
       <Router>
         <div className="col-xs-10">
