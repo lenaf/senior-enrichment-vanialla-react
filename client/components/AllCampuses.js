@@ -22,17 +22,19 @@ export default class AllCampuses extends Component {
     const campuses = this.state.campuses
 
     return (
-      <div id = "all-campuses">
+      <div id="all-campuses">
         <div className="row">
           {
             campuses.map(campus => (
               <div className="col-sm-3" key={campus.id}>
-                  <img className="img-responsive" src={campus.image} />
-                  <div className="caption">
-                    <h5>
-                      <span>{campus.name}</span>
-                    </h5>
-                  </div>
+                <a href ={`/campuses/${campus.id}`}>
+                <img className="img-responsive" src={campus.image} />
+                <div className="caption">
+                  <h5>
+                    <span>{campus.name}</span>
+                  </h5>
+                </div>
+                </a>
               </div>
             ))
           }
