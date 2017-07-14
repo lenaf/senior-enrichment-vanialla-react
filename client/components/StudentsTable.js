@@ -19,6 +19,11 @@ const AllStudents = props =>
               <td>{student.email}</td>
               <td>{student.campusId}</td>
               <td>
+                <a href={`/students/${student.id}`} className="btn btn-info btn-xs">
+                  <span className="glyphicon glyphicon-pencil"></span>
+                </a>
+              </td>
+              <td>
                 <button className="btn btn-danger btn-xs">
                   <span className="glyphicon glyphicon-remove"></span>
                 </button>

@@ -39,6 +39,13 @@ export default class AllCampuses extends Component {
             ))
           }
         </div>
+        <hr/>
+				<h4>Add Campus</h4>
+				<form className="form-group">
+					<label>Campus Name: </label>
+					<input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe"></input>
+					<button type="submit" className="btn btn-primary">Submit</button>
+				</form>
       </div>
     );
   }
