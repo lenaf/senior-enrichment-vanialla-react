@@ -1,32 +1,34 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import StudentsTable from './StudentsTable'
+import BlueBird from 'bluebird'
 
 export default class SingleCampus extends Component {
 	constructor() {
 		super();
 		this.state = {
-			campus: {}
+			campus: {},
+			students: []
 		};
 	}
 
 	componentDidMount() {
-		axios.get('/api/campuses/')
-			.then(res => res.data)
-			.then(campuses => {
-				this.setState({ campuses })
-			});
+		const campusId = this.props.match.params.campusId
+		const gettingCampus = axios.get(`/api/campuses/${campusId}`)
+		const gettingStudents = axios.get(`/api/campuses/${campusId}/students`)
+		BlueBird.all([gettingCampus, gettingStudents])
+			.map(res => res.data)
+			.spread((campus, students) => {
+				students.forEach(student => {
+					student.campus = campus.name
+				})
+				this.setState({ campus, students })
+			})
 	}
 
 	render() {
 
-		const students = [
-			{ id: 1, name: "lena", email: "lforti4", campusId: 1 },
-			{ id: 2, name: "sdfena", email: "lforti4", campusId: 1 },
-			{ id: 3, name: "ledsfna", email: "lforti4", campusId: 2 }
-		]
-
-		const campus = { id: 1, name: "field" }
+		const { campus, students } = this.state
 
 		return (
 			<div>
